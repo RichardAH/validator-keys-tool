@@ -1,0 +1,24 @@
+all:
+	g++ 	-DUSE_BASIC_CONFIG \
+		-static-libstdc++ \
+		../src/*.cpp \
+		../src/ripple/json/impl/*.cpp \
+		../src/ripple/protocol/impl/*.cpp \
+		../src/ripple/basics/impl/*.cpp \
+		../src/ripple/beast/core/*.cpp \
+		../src/ripple/beast/utility/src/*.cpp \
+		../src/ripple/beast/hash/impl/*.cpp \
+		../src/secp256k1/src/secp256k1.c \
+		../src/ed25519-donna/ed25519.c \
+		../src/ripple/crypto/impl/*.cpp \
+		../src/ripple/beast/net/impl/IPAddressConversion.cpp \
+		../src/ripple/beast/net/impl/IPEndpoint.cpp \
+		-I../src/  \
+		-I../src/secp256k1/ \
+		../.nih_toolchain/boost_1_75_0/bin.v2/libs/system/build/gcc-7/release/link-static/threading-multi/visibility-hidden/libboost_system.a \
+		../.nih_toolchain/boost_1_75_0/bin.v2/libs/filesystem/build/gcc-7/release/link-static/threading-multi/visibility-hidden/libboost_filesystem.a \
+		../.nih_toolchain/boost_1_75_0/bin.v2/libs/regex/build/gcc-7/release/link-static/threading-multi/visibility-hidden/libboost_regex.a \
+		../.nih_toolchain/boost_1_75_0/bin.v2/libs/program_options/build/gcc-7/release/link-static/threading-multi/visibility-hidden/libboost_program_options.a \
+		../.nih_toolchain/boost_1_75_0/bin.v2/libs/thread/build/gcc-7/release/link-static/threadapi-pthread/threading-multi/visibility-hidden/libboost_thread.a \
+		 -O2 -fvisibility=hidden -I/hbb_exe/include -L/hbb_exe/lib -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -pthread   -lssl -lcrypto -lz -ldl \
+		--std=c++20 -o vkt-portable
